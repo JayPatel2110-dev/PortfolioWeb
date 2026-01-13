@@ -1,0 +1,102 @@
+/* Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* ===================== VARIABLES ===================== */
+:root {
+  --background: 245 247 250;
+  --foreground: 15 23 42;
+  --heading: 2 6 23;
+  --muted: 71 85 105;
+  --card: 255 255 255;
+}
+
+.dark {
+  --background: 11 15 20;
+  --foreground: 226 232 240;
+  --heading: 248 250 252;
+  --muted: 148 163 184;
+  --card: 17 24 39;
+}
+
+/* ===================== BASE ===================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  /* 🔑 IMPORTANT */
+  min-height: 100%;
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-feature-settings: "ss01";
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: rgb(var(--heading));
+}
+
+::selection {
+  background-color: rgb(56 189 248);
+  color: black;
+}
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ===================== BACKGROUND ===================== */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Light mode */
+body::before {
+  background:
+    radial-gradient(600px circle at 20% 10%, rgba(56, 189, 248, 0.08), transparent 50%),
+    radial-gradient(800px circle at 80% 20%, rgba(168, 85, 247, 0.06), transparent 55%);
+}
+
+body::after {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Dark mode */
+.dark body::before {
+  background:
+    radial-gradient(600px circle at 20% 10%, rgba(56, 189, 248, 0.14), transparent 40%),
+    radial-gradient(800px circle at 80% 20%, rgba(168, 85, 247, 0.12), transparent 45%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+}
+
+.dark body::after {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 75%);
+}
+
+/* ===================== CARD (NO BORDER) ===================== */
+.card {
+  background-color: rgb(var(--card));
+  border-radius: 1.25rem;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.05),
+    0 12px 32px rgba(0, 0, 0, 0.08);
+}
