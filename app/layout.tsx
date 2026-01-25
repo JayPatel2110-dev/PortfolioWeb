@@ -3,6 +3,7 @@ import ThemeProvider from "@/components/layout/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MouseGlow from "@/components/ui/MouseGlow";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
   title: "Jay Patel | Cloud & DevOps Engineer",
@@ -24,8 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col relative">
-
-        {/* Global mouse-follow glow */}
         <MouseGlow />
 
         <ThemeProvider>
@@ -37,7 +36,7 @@ export default function RootLayout({
 
           <Footer />
         </ThemeProvider>
-
+        <Analytics />
       </body>
     </html>
   );
