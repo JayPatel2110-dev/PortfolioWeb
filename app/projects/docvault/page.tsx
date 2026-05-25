@@ -1,67 +1,153 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
+const metrics = [
+  {
+    label: "Architecture",
+    value: "Serverless",
+  },
+  {
+    label: "Deployment",
+    value: "CI/CD",
+  },
+  {
+    label: "Storage",
+    value: "AWS S3",
+  },
+  {
+    label: "Infrastructure",
+    value: "Terraform",
+  },
+];
 
 export default function DocVaultPage() {
   return (
-    <section className="py-24">
-      <div className="max-w-5xl">
+    <main className="max-w-5xl mx-auto px-5 md:px-6 py-24">
+      <Link
+        href="/#projects"
+        className="text-sky-400 hover:text-sky-300 transition-colors"
+      >
+        ← Back to portfolio
+      </Link>
 
-        {/* Header */}
-        <div className="mb-16">
-          <p className="text-sm uppercase tracking-widest text-sky-400 mb-2">
-            Project Deep Dive
+      <div className="mt-10 space-y-16">
+        {/* HERO */}
+        <section className="space-y-6">
+          <p className="uppercase tracking-[0.3em] text-sm text-sky-400">
+            AWS • Serverless • Terraform • CI/CD
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            DocVault
+
+          <h1 className="text-5xl font-bold leading-tight">
+            DocVault — Secure Document Management Platform
           </h1>
-          <p className="text-slate-400 max-w-3xl">
-            DocVault is a serverless document management system built to explore
-            secure access, cloud-native architecture, and infrastructure
-            automation using AWS and Terraform.
-          </p>
-        </div>
 
-        {/* Overview */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-          <p className="text-slate-300 max-w-4xl">
-            The goal of DocVault was not just to store files, but to understand
-            how authentication, authorization, backend logic, and cloud services
-            work together in a real-world system. The project uses a fully
-            serverless architecture and is deployed automatically using a
-            GitLab CI/CD pipeline backed by Terraform.
+          <p className="text-xl text-[rgb(var(--muted))] leading-relaxed max-w-3xl">
+            Cloud-native document management platform designed to explore
+            secure access control, serverless infrastructure,
+            and automated deployment workflows on AWS.
           </p>
-        </div>
 
-        {/* Architecture */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">
-            Architecture & Technology Choices
+          <div className="flex flex-wrap gap-4 pt-2">
+            <a
+              href="https://gitlab.com/jaypatel2110-dev-group/docvault/-/tree/develop?ref_type=heads"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/10 bg-white/4 hover:border-sky-400/40 hover:bg-sky-400/10 transition-all"
+            >
+              Repository
+              <ArrowUpRight size={18} />
+            </a>
+          </div>
+        </section>
+
+        {/* METRICS */}
+        <section className="grid md:grid-cols-4 gap-4">
+          {metrics.map((metric) => (
+            <div
+              key={metric.label}
+              className="rounded-2xl border border-white/10 bg-white/3 p-6"
+            >
+              <p className="text-3xl font-bold text-sky-400">
+                {metric.value}
+              </p>
+
+              <p className="mt-2 text-sm text-[rgb(var(--muted))]">
+                {metric.label}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        {/* OVERVIEW */}
+        <section className="space-y-5">
+          <h2 className="text-3xl font-semibold">
+            Overview
           </h2>
 
-          <ul className="text-slate-300 space-y-2 max-w-4xl">
-            <li>• Frontend hosted as a static website on Amazon S3</li>
-            <li>• Backend implemented using AWS Lambda with Node.js</li>
-            <li>• API layer exposed via AWS API Gateway</li>
-            <li>• Documents stored securely in Amazon S3 using presigned URLs</li>
-            <li>• User data and metadata stored in DynamoDB</li>
-            <li>• JWT-based authentication for secure access control</li>
-          </ul>
+          <div className="space-y-4 text-[rgb(var(--muted))] leading-relaxed">
+            <p>
+              DocVault was built to explore how authentication,
+              authorization, backend APIs, and cloud infrastructure
+              work together in a real-world system.
+            </p>
 
-          <p className="text-slate-400 text-sm mt-4 max-w-4xl">
-            Presigned URLs were used to allow secure uploads and downloads
-            directly to S3 without exposing credentials or routing file data
-            through the backend.
-          </p>
-        </div>
+            <p>
+              The platform uses a fully serverless architecture
+              deployed and managed through Terraform and GitLab CI/CD.
+            </p>
+          </div>
+        </section>
 
-        {/* Project Structure */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">
+        {/* ARCHITECTURE */}
+        <section className="space-y-5">
+          <h2 className="text-3xl font-semibold">
+            Architecture & Design Decisions
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              {
+                title: "Serverless Backend",
+                desc: "Backend APIs were implemented using AWS Lambda and API Gateway to reduce infrastructure management overhead.",
+              },
+              {
+                title: "Secure File Uploads",
+                desc: "Presigned S3 URLs enabled direct secure uploads without exposing AWS credentials.",
+              },
+              {
+                title: "Infrastructure as Code",
+                desc: "Terraform was used to provision and manage AWS infrastructure declaratively.",
+              },
+              {
+                title: "Automated Deployments",
+                desc: "GitLab CI/CD pipelines automated infrastructure provisioning and frontend deployment workflows.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-white/10 bg-white/3 p-6"
+              >
+                <h3 className="text-xl font-semibold">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 text-[rgb(var(--muted))] leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECT STRUCTURE */}
+        <section className="space-y-5">
+          <h2 className="text-3xl font-semibold">
             Project Structure
           </h2>
 
-          <pre className="bg-black/40 border border-white/10 rounded-xl p-6 text-sm text-slate-300 overflow-x-auto">
-{`frontend/
+          <div className="rounded-2xl border border-white/10 bg-black/30 overflow-hidden">
+            <pre className="p-6 text-sm overflow-x-auto text-slate-300">
+              {`frontend/
   └── public/
       ├── index.html
       ├── register.html
@@ -79,77 +165,84 @@ terraform/
   └── backend.tf
 
 .gitlab-ci.yml`}
-          </pre>
-        </div>
+            </pre>
+          </div>
+        </section>
 
-        {/* CI/CD & Terraform */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">
-            Infrastructure as Code & CI/CD
+        {/* STACK */}
+        <section className="space-y-5">
+          <h2 className="text-3xl font-semibold">
+            Tech Stack
           </h2>
 
-          <p className="text-slate-300 max-w-4xl mb-4">
-            Infrastructure provisioning and deployment are fully automated using
-            Terraform and GitLab CI/CD. All AWS resources are defined declaratively,
-            and environment-specific values are injected using CI/CD variables.
-          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              "AWS Lambda",
+              "API Gateway",
+              "Terraform",
+              "GitLab CI/CD",
+              "Amazon S3",
+              "DynamoDB",
+              "Node.js",
+              "React",
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-2 rounded-full border border-white/10 bg-white/4 text-sm"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </section>
 
-          <ul className="text-slate-300 space-y-2 max-w-4xl">
-            <li>• Terraform manages S3, Lambda, API Gateway, and DynamoDB</li>
-            <li>• Remote Terraform state stored in S3 with DynamoDB locking</li>
-            <li>• GitLab CI/CD pipeline handles build, validate, plan, and apply stages</li>
-            <li>• Frontend deployment automated during the apply stage</li>
-          </ul>
-        </div>
-
-        {/* What I Learned */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">
+        {/* LEARNINGS */}
+        <section className="space-y-5">
+          <h2 className="text-3xl font-semibold">
             Key Learnings
           </h2>
 
-          <ul className="text-slate-300 space-y-2 max-w-4xl">
-            <li>• How authentication and authorization affect system design</li>
-            <li>• Secure file handling using presigned URLs</li>
-            <li>• Managing cloud infrastructure using Terraform</li>
-            <li>• CI/CD-driven infrastructure deployment workflows</li>
-            <li>• Trade-offs of serverless architectures</li>
-          </ul>
-        </div>
+          <div className="space-y-3">
+            {[
+              "Authentication and authorization design patterns",
+              "Secure file uploads using presigned URLs",
+              "Terraform-driven infrastructure workflows",
+              "CI/CD-based deployment automation",
+              "Trade-offs of serverless architectures",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-xl border border-sky-400/10 bg-sky-400/5 px-5 py-4 text-sky-300"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </section>
 
-        {/* Future Work */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">
+        {/* FUTURE WORK */}
+        <section className="space-y-5">
+          <h2 className="text-3xl font-semibold">
             Future Improvements
           </h2>
 
-          <ul className="text-slate-300 space-y-2 max-w-4xl">
-            <li>• Password recovery via email or OTP</li>
-            <li>• Multi-user document sharing</li>
-            <li>• Improved file previews</li>
-            <li>• Expanded CI/CD testing stages</li>
-          </ul>
-        </div>
-
-        {/* Links */}
-        <div className="flex items-center gap-6">
-          <a
-            href="https://github.com/your-username/docvault"
-            target="_blank"
-            className="text-sky-400 hover:text-sky-300 transition-colors"
-          >
-            GitHub Repository →
-          </a>
-
-          <Link
-            href="/projects"
-            className="text-slate-400 hover:text-white transition-colors"
-          >
-            ← Back to Projects
-          </Link>
-        </div>
-
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
+              "Password recovery workflows",
+              "Multi-user document sharing",
+              "Improved file previews",
+              "Expanded CI/CD testing stages",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-2xl border border-white/10 bg-white/3 p-5"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
-    </section>
+    </main>
   );
 }

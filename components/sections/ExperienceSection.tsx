@@ -1,87 +1,144 @@
+"use client";
+
 import Reveal from "@/components/ui/Reveal";
+
+const experience = {
+    role: "Associate DevOps Engineer",
+    company: "Wonderlend Hubs Pvt. Ltd.",
+    duration:
+        "Internship: Feb 2025 – Dec 2025 · Full-time Role: Jan 2026 – Present",
+
+    highlights: [
+        "Designed and implemented a JIRA-integrated IAM automation system using Python and boto3 for automated AWS user provisioning workflows.",
+
+        "Built secure credential delivery workflows using AWS SES, Slack notifications, enforced password resets, and MFA-ready onboarding.",
+
+        "Supported staging and production deployments across AWS-based microservices while troubleshooting CI/CD failures, IAM permission issues, and infrastructure misconfigurations.",
+
+        "Collaborated with development teams to debug deployment and infrastructure issues, gaining exposure to real-world operational workflows and cloud reliability engineering.",
+    ],
+
+    stack: [
+        "AWS",
+        "IAM",
+        "Python",
+        "boto3",
+        "Terraform",
+        "GitLab CI/CD",
+        "Linux",
+        "JIRA",
+    ],
+
+    impact: [
+        "Infrastructure automation workflows",
+        "Production deployment exposure",
+        "Cloud governance & IAM automation",
+    ],
+};
 
 export default function ExperienceSection() {
     return (
         <Reveal>
-            <section id="experience" className="py-32 scroll-mt-24">
-                <div className="max-w-6xl">
+            <section
+                id="experience"
+                className="scroll-mt-24 max-w-6xl mx-auto px-5 md:px-6 py-24"
+            >
+                {/* SECTION HEADER */}
+                <div className="space-y-4 mb-14">
+                    <p className="text-sm uppercase tracking-[0.3em] text-sky-400">
+                        Experience
+                    </p>
 
-                    <div className="mb-20">
-                        <p className="text-sm uppercase tracking-widest text-sky-400 mb-2">
-                            Experience
-                        </p>
-                        <h2 className="text-3xl md:text-4xl font-bold">
-                            Real-World Engineering Work
-                        </h2>
-                        <p className="text-[rgb(var(--muted))] mt-4 max-w-3xl">
-                            Hands-on experience working with production cloud infrastructure,
-                            automation pipelines, and deployment workflows in a real
-                            engineering environment.
-                        </p>
-                    </div>
+                    <h2 className="text-4xl md:text-5xl font-bold">
+                        Real-World Engineering Work
+                    </h2>
 
-                    <div className="bg-[rgb(var(--card))] border border-[rgb(var(--card-border))] rounded-2xl p-10"><div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                        <div>
-                            <h3 className="text-2xl font-semibold">
-                                Associate DevOps Engineer — Trainee
-                            </h3>
-                            <p className="text-[rgb(var(--muted))] text-sm mt-1">
-                                Wonderlend Hubs Pvt. Ltd.
-                            </p>
-                            <p className="text-[rgb(var(--muted))] text-sm mt-1">
-                                Internship: Feb 2025 – Dec 2025 · Full-time Role: Jan 2026 – Present
-                            </p>
+                    <p className="max-w-3xl text-[rgb(var(--muted))] leading-relaxed">
+                        Hands-on experience working with production cloud infrastructure,
+                        deployment systems, CI/CD automation, and AWS operational workflows.
+                    </p>
+                </div>
+
+                {/* CARD */}
+                <div className="rounded-3xl border border-white/10 bg-white/3 backdrop-blur-sm overflow-hidden">
+                    <div className="grid lg:grid-cols-[2fr_1fr] gap-10 p-8 md:p-10">
+                        {/* LEFT */}
+                        <div className="space-y-8">
+                            {/* HEADER */}
+                            <div className="space-y-3">
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-semibold">
+                                        {experience.role}
+                                    </h3>
+
+                                    <p className="text-sky-300 mt-2">
+                                        {experience.company}
+                                    </p>
+
+                                    <p className="text-sm text-[rgb(var(--muted))] mt-2">
+                                        {experience.duration}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* HIGHLIGHTS */}
+                            <div className="space-y-4">
+                                <h4 className="text-lg font-semibold">
+                                    Engineering Highlights
+                                </h4>
+
+                                <ul className="space-y-4">
+                                    {experience.highlights.map((item) => (
+                                        <li
+                                            key={item}
+                                            className="flex items-start gap-3 text-[rgb(var(--muted))] leading-relaxed"
+                                        >
+                                            <span className="mt-2 h-2 w-2 rounded-full bg-sky-400 shrink-0" />
+
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
+                        {/* RIGHT */}
+                        <div className="space-y-8">
+                            {/* STACK */}
+                            <div className="space-y-4">
+                                <h4 className="text-lg font-semibold">
+                                    Tech Stack
+                                </h4>
 
-                        <ul className="text-[rgb(var(--foreground))] opacity-80 space-y-4 text-sm leading-relaxed">
-                            <li>
-                                • Designed and implemented a JIRA-integrated IAM automation system
-                                using Python and boto3 that processes access requests, provisions
-                                IAM users, assigns groups, applies audit tags, and updates ticket
-                                status automatically.
-                            </li>
+                                <div className="flex flex-wrap gap-3">
+                                    {experience.stack.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="px-4 py-2 rounded-full text-sm border border-white/10 bg-white/4"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
 
-                            <li>
-                                • Built secure credential delivery workflows using AWS SES and
-                                Slack notifications with enforced password resets and MFA-ready
-                                onboarding, improving access security and consistency.
-                            </li>
+                            {/* IMPACT */}
+                            <div className="space-y-4">
+                                <h4 className="text-lg font-semibold">
+                                    Impact
+                                </h4>
 
-                            <li>
-                                • Supported frequent staging and production deployments across
-                                AWS-based microservices, diagnosing CI/CD pipeline failures,
-                                environment misconfigurations, and permission-related issues to
-                                unblock deployments.
-                            </li>
-
-                            <li>
-                                • Collaborated with development teams to debug infrastructure and
-                                deployment issues, gaining exposure to real-world cloud failure
-                                modes and operational trade-offs.
-                            </li>
-                        </ul>
-
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            {[
-                                "AWS",
-                                "IAM",
-                                "Python",
-                                "boto3",
-                                "Terraform",
-                                "GitLab CI/CD",
-                                "Linux",
-                                "JIRA",
-                            ].map((tech) => (
-                                <span
-                                    key={tech}
-                                    className="text-xs px-3 py-1 rounded-full
-                             bg-white/5 border border-white/10"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
+                                <div className="space-y-3">
+                                    {experience.impact.map((item) => (
+                                        <div
+                                            key={item}
+                                            className="rounded-xl border border-sky-400/10 bg-sky-400/5 px-4 py-3 text-sky-300"
+                                        >
+                                            {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

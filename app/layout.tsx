@@ -6,13 +6,59 @@ import MouseGlow from "@/components/ui/MouseGlow";
 import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
-  title: "Jay Patel | Cloud & DevOps Engineer",
+  title: "Jay Patel | Associate DevOps Engineer",
+
   description:
-    "Cloud & DevOps Engineer with ICT background. Focused on systems, infrastructure, and automation.",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    "Jay Patel — Associate DevOps Engineer. I build AWS infrastructure automation, CI/CD pipelines, Terraform modules, and scalable deployment systems on AWS.",
+
+  keywords: [
+    "Jay Patel",
+    "DevOps Engineer",
+    "AWS",
+    "Terraform",
+    "CI/CD",
+    "ECS",
+    "Docker",
+    "Cloud Engineer",
+    "Infrastructure Automation",
+  ],
+
+  authors: [{ name: "Jay Patel" }],
+
+  metadataBase: new URL("https://jay-patel.xyz"),
+
+  openGraph: {
+    title: "Jay Patel | Associate DevOps Engineer",
+
+    description:
+      "AWS infrastructure automation, Terraform systems, CI/CD pipelines, and production-grade deployment engineering.",
+
+    url: "https://jay-patel.xyz",
+
+    siteName: "Jay Patel Portfolio",
+
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jay Patel Portfolio",
+      },
+    ],
+
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Jay Patel | Associate DevOps Engineer",
+
+    description:
+      "AWS infrastructure automation, Terraform systems, and scalable deployment engineering.",
+
+    images: ["/og-image.png"],
   },
 };
 
@@ -35,8 +81,8 @@ export default function RootLayout({
           </main>
 
           <Footer />
+          <Analytics />
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );

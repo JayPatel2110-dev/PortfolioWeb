@@ -2,31 +2,58 @@
 
 import { useEffect, useState } from "react";
 
-export function useScrollSpy(sectionIds: string[], offset = 120) {
-    const [activeId, setActiveId] = useState<string>("");
+export function useScrollSpy(
+    ids: string[],
+    offset = 120
+) {
+    const [activeId, setActiveId] = useState("");
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveId(entry.target.id);
-                    }
-                });
-            },
+        const handleScroll = () => {
+            const scrollPosition =
+                window.scrollY + offset;
+
+            let currentSection = "";
+
+            for (const id of ids) {
+                const element =
+                    document.getElementById(id);
+
+                if (!element) continue;
+
+                const offsetTop = element.offsetTop;
+                const offsetHeight =
+                    element.offsetHeight;
+
+                if (
+                    scrollPosition >= offsetTop &&
+                    scrollPosition <
+                    offsetTop + offsetHeight
+                ) {
+                    currentSection = id;
+                }
+            }
+
+            setActiveId(currentSection);
+        };
+
+        handleScroll();
+
+        window.addEventListener(
+            "scroll",
+            handleScroll,
             {
-                rootMargin: `-${offset}px 0px -60% 0px`,
-                threshold: 0.1,
+                passive: true,
             }
         );
 
-        sectionIds.forEach((id) => {
-            const el = document.getElementById(id);
-            if (el) observer.observe(el);
-        });
-
-        return () => observer.disconnect();
-    }, [sectionIds, offset]);
+        return () => {
+            window.removeEventListener(
+                "scroll",
+                handleScroll
+            );
+        };
+    }, [ids, offset]);
 
     return activeId;
 }
