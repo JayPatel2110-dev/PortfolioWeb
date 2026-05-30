@@ -31,7 +31,7 @@ const projects = [
       "Zero Terraform drift",
     ],
 
-    repo: "https://gitlab.com/JayPatel2110-dev/blue-green-deployment",
+    repo: "https://github.com/JayPatel2110-dev/blue-green-deployment",
 
     caseStudy: "/projects/ecs-blue-green",
   },
